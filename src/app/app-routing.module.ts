@@ -7,6 +7,30 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
+
+  {
+    path: 'medicos',
+    loadChildren: () =>
+      import('./views/medicos/medicos.module').then(
+        (m) => m.MedicosModule
+      ),
+  },
+
+  {
+    path: 'consultas',
+    loadChildren: () =>
+      import('./views/consultas/consultas.module').then(
+        (m) => m.ConsultasModule
+      ),
+  },
+
+  {
+    path: 'cirurgias',
+    loadChildren: () =>
+      import('./views/cirurgias/cirurgias.module').then(
+        (m) => m.CirurgiasModule
+      ),
+  },
 ];
 
 @NgModule({

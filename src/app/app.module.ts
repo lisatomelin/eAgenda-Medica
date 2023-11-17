@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { provideHttpClient } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
