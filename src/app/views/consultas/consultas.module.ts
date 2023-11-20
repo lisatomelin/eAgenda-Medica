@@ -7,12 +7,16 @@ import { InserirConsultasComponent } from './inserir-consultas/inserir-consultas
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConsultasService } from './services/consultas.service';
+import { EditarConsultasComponent } from './editar-consultas/editar-consultas.component';
+import { ExcluirConsultasComponent } from './excluir-consultas/excluir-consultas.component';
 
 
 @NgModule({
   declarations: [
     ListarConsultasComponent,
-    InserirConsultasComponent
+    InserirConsultasComponent,
+    EditarConsultasComponent,
+    ExcluirConsultasComponent
   ],
   imports: [
     CommonModule,

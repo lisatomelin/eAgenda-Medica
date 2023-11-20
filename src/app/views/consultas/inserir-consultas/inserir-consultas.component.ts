@@ -3,7 +3,7 @@ import { ConsultasService } from '../services/consultas.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Consulta } from '../models/consultas';
-import { ListarConsultasViewModel } from '../models/listar-consultas.viewmodel';
+
 import { Observable } from 'rxjs';
 
 @Component({

@@ -7,6 +7,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CirurgiasService } from './services/cirugias.service';
 import { InserirCirurgiasComponent } from './inserir-cirurgias/inserir-cirurgias.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
+import { ExcuirCirurgiaComponent } from './excluir-cirurgia/excuir-cirurgia.component';
 
 
 
@@ -14,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ListarCirurgiasComponent,
     InserirCirurgiasComponent,
+    EditarCirurgiaComponent,
+    ExcuirCirurgiaComponent,
     
   ],
   imports: [
