@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListarConsultasComponent } from './listar-consultas/listar-consultas.component';
+import { InserirConsultasComponent } from './inserir-consultas/inserir-consultas.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'listar',
     component: ListarConsultasComponent,
+  },
+
+  {
+    path: 'inserir',
+    component: InserirConsultasComponent,
   },
 ];
 

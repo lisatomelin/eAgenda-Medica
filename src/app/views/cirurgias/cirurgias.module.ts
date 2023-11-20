@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CirurgiasRoutingModule,
     SharedModule,
-     ReactiveFormsModule,
+    ReactiveFormsModule,
   ],
   
   providers: [CirurgiasService],
