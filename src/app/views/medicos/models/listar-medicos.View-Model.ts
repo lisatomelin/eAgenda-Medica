@@ -1,9 +1,8 @@
-export type ListarCirurgiasViewModel = {
-  id: string,
-  titulo: string;
+export type ListarMedicosViewModel = {
 
-  data: Date;
-  horaInicio: string;
-  horaTermino: string;
-  nomeMedico: string;
+  id: string,
+  Nome: string;
+  Crm: string;
+  Disponivel: boolean;
+  
 };

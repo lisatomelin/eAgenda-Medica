@@ -23,6 +23,9 @@ import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.compo
     MedicosRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    
+
+
   ],
 
   providers: [MedicosService],

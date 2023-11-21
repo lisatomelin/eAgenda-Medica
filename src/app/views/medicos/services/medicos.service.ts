@@ -14,13 +14,13 @@ export class MedicosService {
     return this.http.post<Medico>(this.API_URL, medico);
   }
 
-  editar(id: number, medico: Medico): Observable<Medico> {
+  editar(id: string, medico: Medico): Observable<Medico> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.put<Medico>(url, medico);
   }
 
-  excluir(id: number): Observable<any> {
+  excluir(id: string): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.delete<Medico>(url);

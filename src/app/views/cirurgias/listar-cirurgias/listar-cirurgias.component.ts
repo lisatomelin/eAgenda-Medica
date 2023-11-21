@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cirurgia } from '../models/cirurgias';
 import { CirurgiasService } from '../services/cirugias.service';
+import { ListarCirurgiasViewModel } from '../models/listar-cirurgias.View-Model';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { CirurgiasService } from '../services/cirugias.service';
 })
 export class ListarCirurgiasComponent implements OnInit {
   cirurgias$?: Observable<Cirurgia[]>;
+  
+  // cirurgias: ListarCirurgiasViewModel[] = [];
 
   constructor(private cirurgiasService: CirurgiasService) {}
 

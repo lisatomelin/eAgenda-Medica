@@ -1,8 +1,9 @@
 
 export type Medico = {
-  id?: number,
+
+  id: string,
   Nome: string, 
-  CRM: string,
+  Crm: string,
   Telefone: string, 
   Disponivel: boolean, 
 

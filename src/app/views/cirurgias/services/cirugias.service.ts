@@ -16,7 +16,7 @@ export class CirurgiasService {
     return this.http.post<Cirurgia>(this.API_URL, cirurgia);
   }
 
-  editar(id: number, cirurgia: Cirurgia): Observable<Cirurgia> {
+  editar(id: string, cirurgia: Cirurgia): Observable<Cirurgia> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.put<Cirurgia>(url, cirurgia);

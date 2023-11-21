@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CirurgiasService } from '../services/cirugias.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cirurgia } from '../models/cirurgias';
+import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
+import { MedicosService } from '../../medicos/services/medicos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inserir-cirurgias',
@@ -11,10 +14,13 @@ import { Cirurgia } from '../models/cirurgias';
 })
 export class InserirCirurgiasComponent implements OnInit {
   form?: FormGroup;
+  medicos: ListarMedicosViewModel[] = [];
 
   constructor(
     private fb: FormBuilder,
     private cirurgiasService: CirurgiasService,
+    private medicosService: MedicosService,
+    private toastrService: ToastrService,
     private router: Router
   ) {}
 
@@ -24,7 +30,14 @@ export class InserirCirurgiasComponent implements OnInit {
       Data: [''],
       HoraInicio: [''],
       HoraTermino: [''],
+      medicoId: new FormControl(''),
     });
+
+    this.medicosService
+      .selecionarTodos()
+      .subscribe(
+        (MedicosSelecionados) => (this.medicos = MedicosSelecionados)
+      );
   }
 
   gravar(): void {

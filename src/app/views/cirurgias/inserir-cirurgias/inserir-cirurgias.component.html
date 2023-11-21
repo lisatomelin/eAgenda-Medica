@@ -23,6 +23,19 @@
         <input type="time" formControlName="HoraTermino" matInput />
       </mat-form-field>
 
+      <div class="form-group mb-3 position-relative">
+        <label class="form-label">Médico:</label>
+        <select
+          class="form-select w-50"
+          name="medicoId"
+          formControlName="medicoId"
+        >
+          <option *ngFor="let medico of medicos" [ngValue]="medico.id">
+            {{ medico.Nome }}
+          </option>
+        </select>
+      </div>
+
       <div class="d-flex justify-content-end gap-2 mt-5">
         <button
           type="submit"

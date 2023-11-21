@@ -5,5 +5,5 @@ export type ListarCirurgiasViewModel = {
   data: Date;
   horaInicio: string;
   horaTermino: string;
-  nomeMedico: string;
+  
 };
