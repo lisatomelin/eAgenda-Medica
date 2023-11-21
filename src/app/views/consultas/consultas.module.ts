@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ConsultasService } from './services/consultas.service';
 import { EditarConsultasComponent } from './editar-consultas/editar-consultas.component';
 import { ExcluirConsultasComponent } from './excluir-consultas/excluir-consultas.component';
+import { CardConsultaComponent } from './card-consulta/card-consulta.component';
+import 'src/app/extensions/form-group.extension';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { ExcluirConsultasComponent } from './excluir-consultas/excluir-consultas
     ListarConsultasComponent,
     InserirConsultasComponent,
     EditarConsultasComponent,
-    ExcluirConsultasComponent
+    ExcluirConsultasComponent,
+    CardConsultaComponent
   ],
   imports: [
     CommonModule,

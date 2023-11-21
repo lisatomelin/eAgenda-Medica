@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicosService } from '../services/medicos.service';
 import { Medico } from '../models/medicos';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { ListarMedicosViewModel } from '../models/listar-medicos.View-Model';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-listar-medicos',
@@ -10,11 +13,26 @@ import { Observable } from 'rxjs';
 })
 export class ListarMedicosComponent implements OnInit{
 
-  medicos$?: Observable<Medico[]>;
+  medicos: ListarMedicosViewModel[] = [];
 
-  constructor(private medicosService: MedicosService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.medicos$ = this.medicosService.selecionarTodos();
+    this.route.data.pipe(map((dados) => dados['medicos'])).subscribe({
+      next: (medicos) => this.obterCmedicos(medicos),
+      error: (erro) => this.processarFalha(erro),
+    });
+  }
+
+  obterCmedicos(medicos: ListarMedicosViewModel[]) {
+    this.medicos = medicos;
+  }
+
+  processarFalha(erro: Error) {
+    this.toastrService.error(erro.message, 'Erro');
   }
 }
+

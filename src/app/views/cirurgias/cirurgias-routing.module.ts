@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListarCirurgiasComponent } from './listar-cirurgias/listar-cirurgias.component';
 import { InserirCirurgiasComponent } from './inserir-cirurgias/inserir-cirurgias.component';
+import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,16 @@ const routes: Routes = [
   {
     path: 'inserir',
     component: InserirCirurgiasComponent,
+  },
+
+  {
+    path: 'editar',
+    component: EditarCirurgiaComponent,
+  },
+
+  {
+    path: 'excluir',
+    component: ExcluirCirurgiaComponent,
   },
 ];
 

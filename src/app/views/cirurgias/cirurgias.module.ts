@@ -8,7 +8,9 @@ import { CirurgiasService } from './services/cirugias.service';
 import { InserirCirurgiasComponent } from './inserir-cirurgias/inserir-cirurgias.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
-import { ExcuirCirurgiaComponent } from './excluir-cirurgia/excuir-cirurgia.component';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
+import { CardCirurgiaComponent } from './card-cirurgia/card-cirurgia.component';
+import 'src/app/extensions/form-group.extension';
 
 
 
@@ -17,7 +19,8 @@ import { ExcuirCirurgiaComponent } from './excluir-cirurgia/excuir-cirurgia.comp
     ListarCirurgiasComponent,
     InserirCirurgiasComponent,
     EditarCirurgiaComponent,
-    ExcuirCirurgiaComponent,
+    ExcluirCirurgiaComponent,
+    CardCirurgiaComponent,
     
   ],
   imports: [

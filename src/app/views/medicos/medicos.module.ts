@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MedicosService } from './services/medicos.service';
 import { EditarMedicosComponent } from './editar-medicos/editar-medicos.component';
 import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.component';
+import { CardMedicoComponent } from './card-medico/card-medico.component';
+import 'src/app/extensions/form-group.extension';
+
 
 
 @NgModule({
@@ -16,15 +19,14 @@ import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.compo
     ListarMedicosComponent,
     InserirMedicosComponent,
     EditarMedicosComponent,
-    ExcluirMedicosComponent
+    ExcluirMedicosComponent,
+    CardMedicoComponent
   ],
   imports: [
     CommonModule,
     MedicosRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    
-
+    ReactiveFormsModule,    
 
   ],
 

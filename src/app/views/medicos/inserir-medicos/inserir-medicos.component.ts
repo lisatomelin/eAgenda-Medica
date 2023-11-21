@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Medico } from '../models/medicos';
 import { MedicosService } from '../services/medicos.service';
+import { FormsMedicosViewModel } from '../models/forms-medicos.View-Model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inserir-medicos',
@@ -10,34 +12,44 @@ import { MedicosService } from '../services/medicos.service';
   styleUrls: ['./inserir-medicos.component.scss']
 })
 export class InserirMedicosComponent implements OnInit {
-  form?: FormGroup;
+    form!: FormGroup;
+    
 
-  constructor(
-    private fb: FormBuilder,
-    private medicosService: MedicosService,
-    private router: Router
-  ) {}
+    constructor(
+      private fb: FormBuilder,
+      private medicosService: MedicosService,
+      private router: Router,
+      private toastrService: ToastrService,
+    ) {}
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      CRM: [''],
-      Nome: [''],
-      Telefone: [''],     
-    });
-  }
+    ngOnInit(): void {
+      this.form = this.fb.group({
+        CRM: new FormControl('', [Validators.required]),
+        Nome: new FormControl('', [Validators.required]),
+        Telefone: new FormControl('', [Validators.required]),     
+      });
+    }
 
-  gravar(): void {
-    this.medicosService.criar(this.form?.value).subscribe({
-      next: (res) => this.processarSucesso(res),
-      error: (err) => this.processarFalha(err),
-    });
-  }
-
-  processarSucesso(res: Medico) {
-    this.router.navigate(['/medicos', 'listar']);
-  }
-
-  processarFalha(err: any) {
-    console.error('Erro:', err);
-  }
+    campoEstaInvalido(nome: string) {
+      return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
+    }
+  
+    gravar() {
+      if (this.form?.invalid) {
+        for (let erro of this.form.validate()) {
+          this.toastrService.warning(erro);
+        }
+  
+        return;
+      }
+  
+      this.medicosService.criar(this.form?.value).subscribe((res) => {
+        this.toastrService.success(
+          `O médico "${res.Nome}" foi cadastrada com sucesso!`,
+          'Sucesso'
+        );
+  
+        this.router.navigate(['/medicos/listar']);
+      });
+    }
 }

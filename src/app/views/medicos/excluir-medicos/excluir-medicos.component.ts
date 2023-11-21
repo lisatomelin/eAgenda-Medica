@@ -12,7 +12,7 @@ import { MedicosService } from '../services/medicos.service';
 })
 export class ExcluirMedicosComponent implements OnInit{
 
-  medicosVM?: VisualizarMedicosViewModel;
+  medicosVM!: VisualizarMedicosViewModel;
 
   constructor(
     private medicosService: MedicosService,

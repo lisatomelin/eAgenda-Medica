@@ -22,7 +22,7 @@ export class CirurgiasService {
     return this.http.put<Cirurgia>(url, cirurgia);
   }
 
-  excluir(id: number): Observable<any> {
+  excluir(id: string): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.delete<Cirurgia>(url);

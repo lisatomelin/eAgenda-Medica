@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListarConsultasComponent } from './listar-consultas/listar-consultas.component';
 import { InserirConsultasComponent } from './inserir-consultas/inserir-consultas.component';
+import { EditarConsultasComponent } from './editar-consultas/editar-consultas.component';
+import { ExcluirConsultasComponent } from './excluir-consultas/excluir-consultas.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,16 @@ const routes: Routes = [
   {
     path: 'inserir',
     component: InserirConsultasComponent,
+  },
+
+  {
+    path: 'editar',
+    component: EditarConsultasComponent,
+  },
+
+  {
+    path: 'excluir',
+    component: ExcluirConsultasComponent,
   },
 ];
 

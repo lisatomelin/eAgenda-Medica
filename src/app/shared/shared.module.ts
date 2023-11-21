@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { CardHoverDirective } from './directives/card-hover.directive';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CardHoverDirective } from './directives/card-hover.directive';
     MatListModule,
     MatTooltipModule,
     MatInputModule,
+    NgSelectModule
     
   ],
   exports: [

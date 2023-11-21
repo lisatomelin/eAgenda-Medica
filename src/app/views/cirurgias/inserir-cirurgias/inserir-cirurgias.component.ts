@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InserirCirurgiasComponent implements OnInit {
   form?: FormGroup;
-  medicos: ListarMedicosViewModel[] = [];
+  medico: ListarMedicosViewModel[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +36,7 @@ export class InserirCirurgiasComponent implements OnInit {
     this.medicosService
       .selecionarTodos()
       .subscribe(
-        (MedicosSelecionados) => (this.medicos = MedicosSelecionados)
+        (MedicosSelecionados) => (this.medico = MedicosSelecionados)
       );
   }
 

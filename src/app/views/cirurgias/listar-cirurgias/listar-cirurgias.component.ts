@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Cirurgia } from '../models/cirurgias';
 import { CirurgiasService } from '../services/cirugias.service';
 import { ListarCirurgiasViewModel } from '../models/listar-cirurgias.View-Model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,13 +12,11 @@ import { ListarCirurgiasViewModel } from '../models/listar-cirurgias.View-Model'
   styleUrls: ['./listar-cirurgias.component.scss'],
 })
 export class ListarCirurgiasComponent implements OnInit {
-  cirurgias$?: Observable<Cirurgia[]>;
-  
-  // cirurgias: ListarCirurgiasViewModel[] = [];
+  cirurgias: ListarCirurgiasViewModel[] = [];
 
-  constructor(private cirurgiasService: CirurgiasService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.cirurgias$ = this.cirurgiasService.selecionarTodos();
+    this.cirurgias = this.route.snapshot.data['cirurgias'];
   }
 }

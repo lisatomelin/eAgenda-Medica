@@ -1,4 +1,4 @@
-export type VisualizarConsultasViewModel = {
+export type  FormsConsultasViewModel = {
   id: string,
   titulo: string;
 

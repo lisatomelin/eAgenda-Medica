@@ -16,13 +16,13 @@ export class ConsultasService {
     return this.http.post<Consulta>(this.API_URL, consulta);
   }
 
-  editar(id: number, consulta: Consulta): Observable<Consulta> {
+  editar(id: string, consulta: Consulta): Observable<Consulta> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.put<Consulta>(url, consulta);
   }
 
-  excluir(id: number): Observable<any> {
+  excluir(id: string): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.delete<Consulta>(url);

@@ -23,18 +23,7 @@
         </dt>
         <dd class="col-md-8">{{ medicosVM?.Telefone }}</dd>
 
-        <!-- <div class="form-group mb-3 position-relative">
-          <label class="form-label">Disponivel</label>
-          <!-- <ng-select
-          formControlName="disponivel"
-           [searchable]="false"
-            [clearable]="false"
-          >
-            <ng-option [value]="0">Não</ng-option>
-            <ng-option [value]="1">Sim</ng-option>
-            
-          </ng-select> -->
-        <!-- </div> --> 
+        <span>Situação: {{ medicosVM?.Disponivel ? 'Disponível' : 'Indisponível' }}</span>
 
         <dt class="col-md-4">
           <label class="control-label">Crm:</label>
