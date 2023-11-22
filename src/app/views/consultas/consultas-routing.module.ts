@@ -23,12 +23,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'editar',
+    path: 'editar/:id',
     component: EditarConsultasComponent,
   },
 
   {
-    path: 'excluir',
+    path: 'excluir/:id',
     component: ExcluirConsultasComponent,
   },
 ];

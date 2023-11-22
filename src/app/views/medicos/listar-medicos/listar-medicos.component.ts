@@ -13,26 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListarMedicosComponent implements OnInit{
 
-  medicos: ListarMedicosViewModel[] = [];
+  medicos$?: Observable<Medico[]>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private toastrService: ToastrService
-  ) {}
+  constructor(private medicosService: MedicosService) {}
 
   ngOnInit(): void {
-    this.route.data.pipe(map((dados) => dados['medicos'])).subscribe({
-      next: (medicos) => this.obterCmedicos(medicos),
-      error: (erro) => this.processarFalha(erro),
-    });
-  }
-
-  obterCmedicos(medicos: ListarMedicosViewModel[]) {
-    this.medicos = medicos;
-  }
-
-  processarFalha(erro: Error) {
-    this.toastrService.error(erro.message, 'Erro');
+    this.medicos$ = this.medicosService.selecionarTodos();
   }
 }
 

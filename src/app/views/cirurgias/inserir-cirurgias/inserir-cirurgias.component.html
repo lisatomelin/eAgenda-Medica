@@ -5,7 +5,7 @@
     <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
       <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
-        <input type="text" formControlName="titulo" matInput />
+        <input type="text" formControlName="Titulo" matInput />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -22,9 +22,10 @@
         <mat-label>Hora Término:</mat-label>
         <input type="time" formControlName="HoraTermino" matInput />
       </mat-form-field>
+      
 
-      <div class="form-group mb-3 position-relative">
-        <label class="form-label">Médico:</label>
+      <div class="form-group mb-3 position-relative ">
+        <label class="form-label ">Médico:</label>
         <select
           class="form-select w-50"
           name="medicoId"
@@ -46,7 +47,7 @@
           Salvar
         </button>
         <button
-          routerLink="/cirugias/listar"
+          routerLink="/cirurgias/listar"
           class="py-3 px-5"
           color="warn"
           mat-stroked-button

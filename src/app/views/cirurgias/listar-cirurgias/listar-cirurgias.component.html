@@ -1,33 +1,74 @@
-<div class="container">
-  <div class="row">
-    <!-- Conteúdo principal -->
-    <div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
-      <!-- Titulo -->
-      <div class="text-md-start">
-        <h1 class="fw-bold text-primary">Listar Cirurgias</h1>
-        <hr />
-      </div>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-8 d-grid gap-3 ps-0">
+    <h1 class="fs-2">Listar Cirurgias</h1>
 
-      <!-- Barra de Ações -->
-      <div class="d-grid d-md-flex gap-1 mt-5">
-        <a
-          [routerLink]="['/cirurgias/inserir']"
-          role="button"
-          class="btn btn-primary me-md-1"
-        >
-          <i class="bi bi-plus-circle me-2"></i>
-          Nova Categoria
-        </a>
-      </div>
+    <button
+      routerLink="/cirurgias/inserir"
+      mat-raised-button
+      class="me-auto py-4 px-5 fs-6"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+      Nova Cirurgia
+    </button>
 
-      <div class="row mt-3 g-2">
-        <div
-          class="col-12 col-md-6 col-lg-3"
-          *ngFor="let cirurgias of cirurgias"
-        >
-          <app-card-cirurgia [cirurgia]="cirurgias"></app-card-cirurgia>
-        </div>
-      </div>
+    <div class="row gap-3">
+      <mat-card
+        *ngFor="let cirurgia of cirurgias$ | async"
+        appCardHover
+        class="col-12 col-md-6 col-lg-3"
+      >
+        <mat-card-header>
+          <mat-card-title>
+            <span>{{ cirurgia.Titulo }}</span>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content> </mat-card-content>
+
+        <mat-card-header>
+          <mat-card-title>
+            <span>{{ cirurgia.Data}}</span>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content> </mat-card-content>
+
+        <mat-card-header>
+          <mat-card-title>
+            <span>{{ cirurgia.HoraInicio}}</span>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content> </mat-card-content>
+
+        <mat-card-header>
+          <mat-card-title>
+            <span>{{ cirurgia.HoraTermino}}</span>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content> </mat-card-content>
+
+        <mat-card-actions class="pe-0" align="end">
+          <button
+            mat-icon-button
+            matTooltip="Editar"
+            color="primary"
+            routerLink="/cirurgias/editar/id"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            matTooltip="Excluir"
+            color="warn"
+            routerLink="/cirurgias/excluir/id"
+          >
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>

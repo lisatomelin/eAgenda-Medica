@@ -12,11 +12,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./listar-cirurgias.component.scss'],
 })
 export class ListarCirurgiasComponent implements OnInit {
-  cirurgias: ListarCirurgiasViewModel[] = [];
+
+  cirurgias$?: Observable<Cirurgia[]>;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.cirurgias = this.route.snapshot.data['cirurgias'];
+    this.cirurgias$ = this.route.snapshot.data['cirurgias'];
   }
 }

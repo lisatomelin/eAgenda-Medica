@@ -12,7 +12,7 @@
         <h2 class="fs-5">
           Tem certeza que deseja excluir o cadastro
           <span class="fw-bolder fst-italic"
-            >"{{ medicosVM?.Nome }}" </span
+            >"{{ medicosVM.Nome }}" </span
           >?
         </h2>
       </div>
@@ -21,14 +21,14 @@
         <dt class="col-md-4">
           <label class="control-label">Telefone:</label>
         </dt>
-        <dd class="col-md-8">{{ medicosVM?.Telefone }}</dd>
+        <dd class="col-md-8">{{ medicosVM.Telefone }}</dd>
 
-        <span>Situação: {{ medicosVM?.Disponivel ? 'Disponível' : 'Indisponível' }}</span>
+        <span>Situação: {{ medicosVM.Disponivel ? 'Disponível' : 'Indisponível' }}</span>
 
         <dt class="col-md-4">
           <label class="control-label">Crm:</label>
         </dt>
-        <dd class="col-md-8">{{ medicosVM?.Crm }}</dd>
+        <dd class="col-md-8">{{ medicosVM.Crm }}</dd>
 
     
 

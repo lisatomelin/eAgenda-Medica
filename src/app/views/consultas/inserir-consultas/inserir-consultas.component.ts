@@ -3,6 +3,7 @@ import { ConsultasService } from '../services/consultas.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
 
 @Component({
   selector: 'app-inserir-consultas',
@@ -11,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InserirConsultasComponent implements OnInit {
 
-    form?: FormGroup;  
+    form?: FormGroup; 
+    medico: ListarMedicosViewModel[] = []; 
 
     constructor(
       private formBuilder: FormBuilder,
@@ -26,6 +28,7 @@ export class InserirConsultasComponent implements OnInit {
         data: new FormControl('', [Validators.required]),
         horaInicio: new FormControl('', [Validators.required]),
         horaTermino: new FormControl('', [Validators.required]), 
+        medicoId: new FormControl(''),
 
       });
     }

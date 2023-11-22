@@ -8,8 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { provideHttpClient } from '@angular/common/http';
-
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +18,13 @@ import { provideHttpClient } from '@angular/common/http';
     BrowserAnimationsModule,
     CoreModule,
     DashboardModule,
+
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
+    
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent],

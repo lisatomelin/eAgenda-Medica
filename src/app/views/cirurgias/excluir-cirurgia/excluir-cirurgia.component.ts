@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { VisualizarCirurgiasViewModel } from '../models/visualizar-cirgias.View-Model';
 import { CirurgiasService } from '../services/cirugias.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-excluir-cirurgia',
@@ -20,18 +21,34 @@ export class ExcluirCirurgiaComponent {
   ) {}
 
   ngOnInit(): void {
-    this.cirurgiaVM = this.route.snapshot.data['cirurgia'];
+    this.route.data.pipe(map((dados) => dados['cirurgia'])).subscribe({
+      next: (cirurgia) => this.obterCirurgia(cirurgia),
+      error: (erro) => this.processarFalha(erro),
+    });
   }
 
   gravar() {
-    this.cirurgiasService.excluir(this.cirurgiaVM!.id).subscribe(() => {
-      this.toastrService.success(
-        `A cirurgia foi excluída com sucesso!`,
-        'Sucesso'
-      );
-
-      this.router.navigate(['/cirurgias', 'listar']);
+    this.cirurgiasService.excluir(this.cirurgiaVM!.id).subscribe({
+      next: () => this.processarSucesso(),
+      error: (err) => this.processarFalha(err),
     });
+  }
+
+  obterCirurgia(cirurgia: VisualizarCirurgiasViewModel) {
+    this.cirurgiaVM = cirurgia;
+  }
+
+  processarSucesso() {
+    this.toastrService.success(
+      `A cirurgia foi excluída com sucesso!`,
+      'Sucesso'
+    );
+
+    this.router.navigate(['/cirurgias', 'listar']);
+  }
+
+  processarFalha(erro: Error) {
+    this.toastrService.error(erro.message, 'Erro');
   }
 
 }

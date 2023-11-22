@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
 import { MedicosService } from '../../medicos/services/medicos.service';
 import { Cirurgia } from '../models/cirurgias';
@@ -20,8 +19,7 @@ export class EditarCirurgiaComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private cirurgiasService: CirurgiasService,
-    private medicosService: MedicosService,
-    private toastrService: ToastrService,
+    private medicosService: MedicosService,    
     private router: Router,
     private route: ActivatedRoute
   ) {}

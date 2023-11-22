@@ -10,9 +10,7 @@ import { MedicosService } from './services/medicos.service';
 import { EditarMedicosComponent } from './editar-medicos/editar-medicos.component';
 import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.component';
 import { CardMedicoComponent } from './card-medico/card-medico.component';
-import 'src/app/extensions/form-group.extension';
-
-
+import 'src/app/extensions/form-group.extension'; 
 
 @NgModule({
   declarations: [

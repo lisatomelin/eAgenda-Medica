@@ -11,6 +11,7 @@ import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.compo
 import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
 import { CardCirurgiaComponent } from './card-cirurgia/card-cirurgia.component';
 import 'src/app/extensions/form-group.extension';
+import { MedicosService } from '../medicos/services/medicos.service';
 
 
 
@@ -30,6 +31,6 @@ import 'src/app/extensions/form-group.extension';
     ReactiveFormsModule,
   ],
   
-  providers: [CirurgiasService],
+  providers: [CirurgiasService, MedicosService],
 })
 export class CirurgiasModule { }
