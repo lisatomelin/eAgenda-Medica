@@ -9,7 +9,7 @@ import { InserirCirurgiasComponent } from './inserir-cirurgias/inserir-cirurgias
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
 import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
-import { CardCirurgiaComponent } from './card-cirurgia/card-cirurgia.component';
+
 import 'src/app/extensions/form-group.extension';
 import { MedicosService } from '../medicos/services/medicos.service';
 
@@ -21,7 +21,7 @@ import { MedicosService } from '../medicos/services/medicos.service';
     InserirCirurgiasComponent,
     EditarCirurgiaComponent,
     ExcluirCirurgiaComponent,
-    CardCirurgiaComponent,
+    
     
   ],
   imports: [

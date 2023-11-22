@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Medico } from '../models/medicos';
 import { MedicosService } from '../services/medicos.service';
 import { FormsMedicosViewModel } from '../models/forms-medicos.View-Model';
 import { ToastrService } from 'ngx-toastr';
@@ -24,9 +23,9 @@ export class InserirMedicosComponent implements OnInit {
 
     ngOnInit(): void {
       this.form = this.fb.group({
-        CRM: new FormControl('', [Validators.required]),
-        Nome: new FormControl('', [Validators.required]),
-        Telefone: new FormControl('', [Validators.required]),     
+        crm: new FormControl('', [Validators.required]),
+        nome: new FormControl('', [Validators.required]),
+        telefone: new FormControl('', [Validators.required]),     
       });
     }
 
@@ -45,7 +44,7 @@ export class InserirMedicosComponent implements OnInit {
   
       this.medicosService.criar(this.form?.value).subscribe((res) => {
         this.toastrService.success(
-          `O médico "${res.Nome}" foi cadastrada com sucesso!`,
+          `O médico "${res.nome}" foi cadastrada com sucesso!`,
           'Sucesso'
         );
   

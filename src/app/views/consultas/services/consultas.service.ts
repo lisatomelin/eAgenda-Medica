@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Consulta } from '../models/consultas';
+import { ListarConsultasViewModel } from '../models/listar-consultas.View-Model';
+import { VisualizarConsultasViewModel } from '../models/visualizar-onsultas.View-Model';
+import { FormsConsultasViewModel } from '../models/forms-consultas.View-Model';
 
 
 
@@ -12,29 +14,31 @@ export class ConsultasService {
 
   constructor(private http: HttpClient) {}
 
-  criar(consulta: Consulta): Observable<Consulta> {
-    return this.http.post<Consulta>(this.API_URL, consulta);
+  criar(consulta: FormsConsultasViewModel): Observable<FormsConsultasViewModel> {
+    return this.http.post<FormsConsultasViewModel>(this.API_URL, consulta);
   }
 
-  editar(id: string, consulta: Consulta): Observable<Consulta> {
+  editar(id: string, consulta: FormsConsultasViewModel): Observable<FormsConsultasViewModel> {
     const url = `${this.API_URL}/${id}`;
 
-    return this.http.put<Consulta>(url, consulta);
+    return this.http.put<FormsConsultasViewModel>(url, consulta);
   }
 
   excluir(id: string): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
-    return this.http.delete<Consulta>(url);
+    return this.http.delete<VisualizarConsultasViewModel>(url);
   }
 
-  selecionarPorId(id: number): Observable<Consulta> {
-    const url = `${this.API_URL}/${id}`;
+  selecionarPorId(id: string): Observable<VisualizarConsultasViewModel> {
+    const url = `${this.API_URL}/visualizacao-completa/${id}`;
 
-    return this.http.get<Consulta>(url);
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados));
   }
 
-  selecionarTodos(): Observable<Consulta[]> {
-    return this.http.get<Consulta[]>(this.API_URL);
+  selecionarTodos(): Observable<ListarConsultasViewModel[]> {
+    return this.http.get<any>(this.API_URL)
+    .pipe(map(res => res.dados));
   }
 }

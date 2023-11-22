@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Medico } from '../models/medicos';
 import { MedicosService } from '../services/medicos.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsMedicosViewModel } from '../models/forms-medicos.View-Model';
@@ -25,9 +24,9 @@ export class EditarMedicosComponent {
 
     ngOnInit(): void {
       this.form = this.fb.group({
-        CRM: new FormControl('', [Validators.required]),
-        Nome: new FormControl('', [Validators.required]),
-        Telefone: new FormControl('', [Validators.required]),     
+        crm: new FormControl('', [Validators.required]),
+        nome: new FormControl('', [Validators.required]),
+        telefone: new FormControl('', [Validators.required]),     
       });
 
       this.form.patchValue(this.route.snapshot.data['medico']);
@@ -50,7 +49,7 @@ export class EditarMedicosComponent {
   
       this.medicosService.editar(id, this.form?.value).subscribe((res) => {
         this.toastrService.success(
-          `O médico"${res.Nome}" foi editada com sucesso!`,
+          `O médico"${res.nome}" foi editada com sucesso!`,
           'Sucesso'
         );
   

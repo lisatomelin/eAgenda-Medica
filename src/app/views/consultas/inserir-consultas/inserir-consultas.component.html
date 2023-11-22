@@ -10,17 +10,17 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Data:</mat-label>
-        <input type="date" formControlName="Data" matInput />
+        <input type="date" formControlName="data" matInput />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Hora Início:</mat-label>
-        <input type="time" formControlName="HoraInicio" matInput />
+        <input type="time" formControlName="horaInicio" matInput />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Hora Término:</mat-label>
-        <input type="time" formControlName="HoraTermino" matInput />
+        <input type="time" formControlName="horaTermino" matInput />
       </mat-form-field>
 
       <div class="form-group mb-3 position-relative">
@@ -31,7 +31,7 @@
           formControlName="medicoId"
         >
           <option *ngFor="let medico of medico" [ngValue]="medico.id">
-            {{ medico.Nome }}
+            {{ medico.nome }}
           </option>
         </select>
       </div>

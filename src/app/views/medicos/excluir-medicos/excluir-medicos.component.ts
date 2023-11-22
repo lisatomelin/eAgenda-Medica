@@ -17,39 +17,25 @@ export class ExcluirMedicosComponent implements OnInit{
   constructor(
     private medicosService: MedicosService,
     private toastrService: ToastrService,
-    private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.route.data.pipe(map((dados) => dados['medico'])).subscribe({
-      next: (medico) => this.obterMedico(medico),
-      error: (erro) => this.processarFalha(erro),
-    });
+    this. medicosVM = this.route.snapshot.data['medico'];
   }
 
   gravar() {
-    this.medicosService.excluir(this.medicosVM!.id).subscribe({
-      next: () => this.processarSucesso(),
-      error: (err) => this.processarFalha(err),
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+
+    this.medicosService.excluir(id).subscribe(() => {
+      this.toastrService.success(
+        `O Médico foi excluída com sucesso!`,
+        'Sucesso'
+      );
+
+      this.router.navigate(['/medicos', 'listar']);
     });
-  }
-
-  obterMedico(medico: VisualizarMedicosViewModel) {
-    this.medicosVM = medico;
-  }
-
-  processarSucesso() {
-    this.toastrService.success(
-      `O médico foi excluído com sucesso!`,
-      'Sucesso'
-    );
-
-    this.router.navigate(['/medicos', 'listar']);
-  }
-
-  processarFalha(erro: Error) {
-    this.toastrService.error(erro.message, 'Erro');
   }
 }
 

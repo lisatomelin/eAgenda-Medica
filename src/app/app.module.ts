@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from './core/core.module';
-import { DashboardModule } from './views/dashboard/dashboard.module';
+
 import { provideHttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardModule } from './views/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [AppComponent],

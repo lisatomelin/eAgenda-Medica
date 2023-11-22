@@ -48,7 +48,7 @@ export class InserirConsultasComponent implements OnInit {
   
       this.consultasService.criar(this.form?.value).subscribe((res) => {
         this.toastrService.success(
-          `A consulta "${res.Titulo}" foi cadastrada com sucesso!`,
+          `A consulta "${res.titulo}" foi cadastrada com sucesso!`,
           'Sucesso'
         );
   

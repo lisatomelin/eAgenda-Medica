@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cirurgia } from '../models/cirurgias';
+
 import { CirurgiasService } from '../services/cirugias.service';
 import { ListarCirurgiasViewModel } from '../models/listar-cirurgias.View-Model';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListarCirurgiasComponent implements OnInit {
 
-  cirurgias$?: Observable<Cirurgia[]>;
+  cirurgias$?: Observable<ListarCirurgiasViewModel[]>;
 
   constructor(private route: ActivatedRoute) {}
 

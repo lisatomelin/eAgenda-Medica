@@ -46,7 +46,7 @@ export class EditarConsultasComponent {
 
     this.consultasService.editar(id, this.form?.value).subscribe((res) => {
       this.toastrService.success(
-        `A consulta "${res.Titulo}" foi editada com sucesso!`,
+        `A consulta "${res.titulo}" foi editada com sucesso!`,
         'Sucesso'
       );
 

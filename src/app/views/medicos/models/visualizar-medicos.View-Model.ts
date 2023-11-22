@@ -1,9 +1,9 @@
 export type VisualizarMedicosViewModel = {
 
   id: string,
-  Nome: string;
-  Crm: string;
-  Telefone: string,
-  Disponivel: boolean;
+  nome: string;
+  crm: string;
+  telefone: string,
+  disponivel: boolean;
 
 }

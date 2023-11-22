@@ -5,32 +5,37 @@
       <!-- Titulo -->
       <div class="text-md-start">
         <div class="text-md-start">
-          <h1 class="fw-bold text-primary">Excluir Cadastro Médico</h1>
+          <h1 class="fw-bold text-primary">Excluir Médico</h1>
           <hr />
         </div>
 
         <h2 class="fs-5">
-          Tem certeza que deseja excluir o cadastro
-          <span class="fw-bolder fst-italic"
-            >"{{ medicosVM.Nome }}" </span
+          Tem certeza que deseja excluir o médico: 
+          <span class="fw-bolder fst-italic">"{{ medicosVM.nome }}" </span
           >?
         </h2>
       </div>
 
       <dl class="form-group mt-4 row">
         <dt class="col-md-4">
+          <label class="control-label">CRM:</label>
+        </dt>
+        <dd class="col-md-8">{{ medicosVM.crm }}</dd>
+      </dl>
+
+      <dl class="form-group mt-4 row">
+        <dt class="col-md-4">
           <label class="control-label">Telefone:</label>
         </dt>
-        <dd class="col-md-8">{{ medicosVM.Telefone }}</dd>
+        <dd class="col-md-8">{{ medicosVM.telefone }}</dd>
+      </dl>
 
-        <span>Situação: {{ medicosVM.Disponivel ? 'Disponível' : 'Indisponível' }}</span>
-
+      <dl class="form-group mt-4 row">
         <dt class="col-md-4">
-          <label class="control-label">Crm:</label>
+          <label class="control-label">Disponibilidade:</label>
         </dt>
-        <dd class="col-md-8">{{ medicosVM.Crm }}</dd>
-
-    
+        <dd class="col-md-8">{{ medicosVM.disponivel }}</dd>
+      </dl>
 
       <div class="card-footer g-grid d-flex gap-1 mt-5">
         <button (click)="gravar()" type="button" class="btn btn-danger px-5">
@@ -46,5 +51,8 @@
           Voltar
         </button>
       </div>
+    </div>
+  </div>
+</div>
   
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicosService } from '../services/medicos.service';
-import { Medico } from '../models/medicos';
 import { Observable, map } from 'rxjs';
 import { ListarMedicosViewModel } from '../models/listar-medicos.View-Model';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListarMedicosComponent implements OnInit{
 
-  medicos$?: Observable<Medico[]>;
+  medicos$?: Observable<ListarMedicosViewModel[]>;
 
   constructor(private medicosService: MedicosService) {}
 

@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Medico } from "../models/medicos";
+import { FormsMedicosViewModel } from "../models/forms-medicos.View-Model";
+import { VisualizarMedicosViewModel } from "../models/visualizar-medicos.View-Model";
+import { ListarMedicosViewModel } from "../models/listar-medicos.View-Model";
 
 @Injectable()
 export class MedicosService {
@@ -10,30 +12,32 @@ export class MedicosService {
 
   constructor(private http: HttpClient) {}
 
-  criar(medico: Medico): Observable<Medico> {
-    return this.http.post<Medico>(this.API_URL, medico);
+  criar(medico: FormsMedicosViewModel): Observable<FormsMedicosViewModel> {
+    return this.http.post<FormsMedicosViewModel>(this.API_URL, medico);
   }
 
-  editar(id: string, medico: Medico): Observable<Medico> {
+  editar(id: string, medico: FormsMedicosViewModel): Observable<FormsMedicosViewModel> {
     const url = `${this.API_URL}/${id}`;
 
-    return this.http.put<Medico>(url, medico);
+    return this.http.put<FormsMedicosViewModel>(url, medico);
   }
 
-  excluir(id: string): Observable<any> {
+  excluir(id: number): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
-    return this.http.delete<Medico>(url);
+    return this.http.delete<VisualizarMedicosViewModel>(url);
   }
 
-  selecionarPorId(id: number): Observable<Medico> {
-    const url = `${this.API_URL}/${id}`;
+  selecionarPorId(id: string): Observable<VisualizarMedicosViewModel> {
+    const url = `${this.API_URL}/visualizacao-completa/${id}`;
 
-    return this.http.get<Medico>(url);
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados));
   }
 
-  selecionarTodos(): Observable<Medico[]> {
-    return this.http.get<Medico[]>(this.API_URL);
+  selecionarTodos(): Observable<ListarMedicosViewModel[]> {
+    return this.http.get<any>(this.API_URL)
+    .pipe(map(res => res.dados));
   }
 
 }
