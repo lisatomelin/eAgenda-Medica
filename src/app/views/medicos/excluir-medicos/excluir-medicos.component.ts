@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { VisualizarMedicosViewModel } from '../models/visualizar-medicos.View-Model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { map } from 'rxjs';
 import { MedicosService } from '../services/medicos.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-excluir-medicos',
@@ -12,7 +12,7 @@ import { MedicosService } from '../services/medicos.service';
 })
 export class ExcluirMedicosComponent implements OnInit{
 
-  medicosVM!: VisualizarMedicosViewModel;
+  medicosVM?: Observable<VisualizarMedicosViewModel>;
 
   constructor(
     private medicosService: MedicosService,
@@ -22,11 +22,11 @@ export class ExcluirMedicosComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this. medicosVM = this.route.snapshot.data['medico'];
+    this.medicosVM = this.route.data.pipe(map((res) => res['medico']));
   }
 
   gravar() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
 
     this.medicosService.excluir(id).subscribe(() => {
       this.toastrService.success(

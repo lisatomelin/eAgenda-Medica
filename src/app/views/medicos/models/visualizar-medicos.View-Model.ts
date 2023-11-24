@@ -4,6 +4,6 @@ export type VisualizarMedicosViewModel = {
   nome: string;
   crm: string;
   telefone: string,
-  disponivel: boolean;
+  disponibilidade: boolean;
 
 }

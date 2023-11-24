@@ -1,49 +1,62 @@
-<div class="container">
-  <div class="row">
-    <!-- Conteúdo principal -->
-    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
-      <!-- Titulo -->
-      <div class="text-md-start">
-        <div class="text-md-start">
-          <h1 class="fw-bold text-primary">Excluir Cadastro Cirurgia</h1>
-          <hr />
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+    <h1 class="fs-2">Excluir Cirurgia</h1>
+
+    <p class="fs-5">
+      Você tem certeza que deseja excluir a cirurgia?
+    </p>
+
+    <mat-list *ngIf="cirurgiaVM | async as cirurgia">
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Titulo:</span>
+          <span>{{cirurgia.titulo}}</span>
         </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
 
-        <h2 class="fs-5">
-          Tem certeza que deseja excluir o cadastro
-          <span class="fw-bolder fst-italic"
-            >"{{ cirurgiaVM?.titulo }}" </span>?
-        </h2>
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Data:</span>
+          <span>{{cirurgia.data}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Hora Inicio:</span>
+        <span>{{cirurgia.horaInicio}}</span>
       </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">Telefone:</label>
-        </dt>
-        <dd class="col-md-8">{{ cirurgiaVM?.data }}</dd>
+  <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Hora Termino</span>
+        <span>{{cirurgia.horaTermino}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider> 
 
-        <dt class="col-md-4">
-          <label class="control-label">Crm:</label>
-        </dt>
-        <dd class="col-md-8">{{ cirurgiaVM?.horaInicio }}</dd>
 
-        <dt class="col-md-4">
-          <label class="control-label">Crm:</label>
-        </dt>
-        <dd class="col-md-8">{{ cirurgiaVM?.horaTermino }}</dd>    
-
-      <div class="card-footer g-grid d-flex gap-1 mt-5">
-        <button (click)="gravar()" type="button" class="btn btn-danger px-5">
-          <i class="bi bi-trash-fill me-2"></i>
-          Excluir
-        </button>
-        <button
-          routerLink="/cirurgias/listar"
-          type="button"
-          class="btn btn-outline-primary px-5"
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button
+        class="py-3 px-5"
+        color="warn"
+        mat-raised-button
+        (click)="gravar()"
         >
-          <i class="bi bi-arrow-return-left me-2"></i>
-          Voltar
-        </button>
-      </div>
-  
+
+        Excluir
+      </button>
+      <button
+        routerLink="/cirurgias/listar"
+        class="py-3 px-5"
+        color="primary"
+        mat-stroked-button
+      >
+        Voltar
+      </button>
+    </div>
+

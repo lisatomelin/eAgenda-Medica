@@ -8,7 +8,7 @@ import { ListarMedicosViewModel } from "../models/listar-medicos.View-Model";
 
 @Injectable()
 export class MedicosService {
-  private API_URL = `${environment.API_URL}/medicos`;
+  private API_URL = `${environment.API_URL}/Medico`;
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +22,7 @@ export class MedicosService {
     return this.http.put<FormsMedicosViewModel>(url, medico);
   }
 
-  excluir(id: number): Observable<any> {
+  excluir(id: string): Observable<any> {
     const url = `${this.API_URL}/${id}`;
 
     return this.http.delete<VisualizarMedicosViewModel>(url);

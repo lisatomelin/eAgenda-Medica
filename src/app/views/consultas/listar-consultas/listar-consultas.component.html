@@ -1,6 +1,8 @@
 <div class="row justify-content-center mt-5">
   <div class="col-md-8 d-grid gap-3 ps-0">
-    <h1 class="fs-2">Listar Consultas</h1>
+    <h1 class="fs-2 row justify-content-center ">
+      Lista de Consultas Agendadas
+    </h1>
 
     <button
       routerLink="/consultas/inserir"
@@ -55,7 +57,7 @@
             mat-icon-button
             matTooltip="Editar"
             color="primary"
-            routerLink="/consultas/editar/id"
+            routerLink="/consultas/editar/{{consulta.id}}"
           >
             <mat-icon>edit_note</mat-icon>
           </button>
@@ -63,7 +65,7 @@
             mat-icon-button
             matTooltip="Excluir"
             color="warn"
-            routerLink="/consultas/excluir/id"
+            routerLink="/consultas/excluir/{{consulta.id}}"
           >
             <mat-icon>delete_sweep</mat-icon>
           </button>

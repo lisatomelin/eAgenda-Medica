@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicosService } from '../services/medicos.service';
@@ -10,7 +10,7 @@ import { FormsMedicosViewModel } from '../models/forms-medicos.View-Model';
   templateUrl: './editar-medicos.component.html',
   styleUrls: ['./editar-medicos.component.scss']
 })
-export class EditarMedicosComponent {
+export class EditarMedicosComponent implements OnInit {
     form!: FormGroup;
     
 
@@ -49,7 +49,7 @@ export class EditarMedicosComponent {
   
       this.medicosService.editar(id, this.form?.value).subscribe((res) => {
         this.toastrService.success(
-          `O médico"${res.nome}" foi editada com sucesso!`,
+          `O médico ${res.nome} foi editada com sucesso!`,
           'Sucesso'
         );
   

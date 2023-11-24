@@ -29,17 +29,11 @@
           <mat-card-subtitle>
              <span>Telefone: {{medico.telefone}}</span>
           </mat-card-subtitle>
-        </mat-card-content>
+        </mat-card-content>        
 
         <mat-card-content> 
           <mat-card-subtitle>
-             <span>CRM: {{medico.crm}}</span>
-          </mat-card-subtitle>
-        </mat-card-content>
-
-        <mat-card-content> 
-          <mat-card-subtitle>
-             <span>Situação: {{ medico.disponivel ? 'Disponível' : 'Indisponível' }}</span>
+             <span>Situação: {{ medico.disponibilidade ? 'Disponível' : 'Indisponível' }}</span>
           </mat-card-subtitle>
         </mat-card-content>
 
@@ -50,7 +44,7 @@
             mat-icon-button
             matTooltip="Editar"
             color="primary"
-            routerLink="/medicos/editar/id"
+            routerLink="/medicos/editar/{{medico.id}}"
           >
             <mat-icon>edit_note</mat-icon>
           </button>
@@ -58,7 +52,7 @@
             mat-icon-button
             matTooltip="Excluir"
             color="warn"
-            routerLink="/medicos/excluir/id"
+            routerLink="/medicos/excluir/{{medico.id}}"
           >
             <mat-icon>delete_sweep</mat-icon>
           </button>

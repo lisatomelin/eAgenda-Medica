@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListarConsultasViewModel } from '../models/listar-consultas.View-Model';
-import { VisualizarConsultasViewModel } from '../models/visualizar-onsultas.View-Model';
+import { VisualizarConsultasViewModel } from '../models/visualizar-consultas.View-Model';
 import { FormsConsultasViewModel } from '../models/forms-consultas.View-Model';
 
 
 
 @Injectable()
 export class ConsultasService {
-  private API_URL = `${environment.API_URL}/consultas`;
+  private API_URL = `${environment.API_URL}/Consulta`;
 
   constructor(private http: HttpClient) {}
 

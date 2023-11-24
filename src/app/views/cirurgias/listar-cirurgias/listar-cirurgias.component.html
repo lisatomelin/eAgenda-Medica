@@ -1,6 +1,8 @@
 <div class="row justify-content-center mt-5">
   <div class="col-md-8 d-grid gap-3 ps-0">
-    <h1 class="fs-2">Listar Cirurgias</h1>
+    <h1 class="fs-2 row justify-content-center ">
+      Lista de Cirurgias Agendadas
+    </h1>
 
     <button
       routerLink="/cirurgias/inserir"
@@ -14,7 +16,7 @@
 
     <div class="row gap-3">
       <mat-card
-        *ngFor="let cirurgia of cirurgias$ | async"
+        *ngFor="let cirurgia of cirurgia$ | async"
         appCardHover
         class="col-12 col-md-6 col-lg-3"
       >
@@ -51,11 +53,20 @@
         <mat-card-content> </mat-card-content>
 
         <mat-card-actions class="pe-0" align="end">
+
+          <button
+            mat-icon-button
+            matTooltip="VerMedicos"
+            color="primary"
+            routerLink="/cirurgias/medicos/{{cirurgia.id}}">
+            <mat-icon>edit_note</mat-icon>
+          </button>
+
           <button
             mat-icon-button
             matTooltip="Editar"
             color="primary"
-            routerLink="/cirurgias/editar/id"
+            routerLink="/cirurgias/editar/{{cirurgia.id}}"
           >
             <mat-icon>edit_note</mat-icon>
           </button>
@@ -63,7 +74,7 @@
             mat-icon-button
             matTooltip="Excluir"
             color="warn"
-            routerLink="/cirurgias/excluir/id"
+            routerLink="/cirurgias/excluir/{{cirurgia.id}}"
           >
             <mat-icon>delete_sweep</mat-icon>
           </button>

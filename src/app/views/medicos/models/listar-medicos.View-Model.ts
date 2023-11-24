@@ -1,9 +1,8 @@
 export type ListarMedicosViewModel = {
 
   id: string,
-  nome: string;
-  crm: string;
+  nome: string;  
   telefone: string,
-  disponivel: boolean;
+  disponibilidade: boolean;
   
 };

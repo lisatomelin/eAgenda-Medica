@@ -23,7 +23,11 @@ export class EditarConsultasComponent {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      titulo: new FormControl('', [Validators.required]),
+      titulo: [''],
+      data: [''],
+      horaInicio: [''],
+      horaTermino: [''],
+      medicoId: new FormControl(''),
     });
 
     this.form.patchValue(this.route.snapshot.data['consultas']);

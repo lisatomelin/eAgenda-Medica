@@ -8,10 +8,10 @@ import { CirurgiasService } from './services/cirugias.service';
 import { InserirCirurgiasComponent } from './inserir-cirurgias/inserir-cirurgias.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.component';
-import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
-
 import 'src/app/extensions/form-group.extension';
 import { MedicosService } from '../medicos/services/medicos.service';
+import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
+import { VisualizarMedicoCirurgiaComponent } from './visualizar-medico-cirurgia/visualizar-medico-cirurgia.component';
 
 
 
@@ -21,6 +21,7 @@ import { MedicosService } from '../medicos/services/medicos.service';
     InserirCirurgiasComponent,
     EditarCirurgiaComponent,
     ExcluirCirurgiaComponent,
+    VisualizarMedicoCirurgiaComponent,
     
     
   ],

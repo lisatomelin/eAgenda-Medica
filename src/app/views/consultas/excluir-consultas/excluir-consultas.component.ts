@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import { VisualizarConsultasViewModel } from '../models/visualizar-onsultas.View-Model';
+import { Component, OnInit } from '@angular/core';
+import { VisualizarConsultasViewModel } from '../models/visualizar-consultas.View-Model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConsultasService } from '../services/consultas.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-excluir-consultas',
   templateUrl: './excluir-consultas.component.html',
   styleUrls: ['./excluir-consultas.component.scss']
 })
-export class ExcluirConsultasComponent {
+export class ExcluirConsultasComponent implements OnInit {
 
-  consultasVM?: VisualizarConsultasViewModel;
+  consultasVM?: Observable<VisualizarConsultasViewModel>;
 
   constructor(
     private consultasService: ConsultasService,
@@ -21,11 +22,13 @@ export class ExcluirConsultasComponent {
   ) {}
 
   ngOnInit(): void {
-    this.consultasVM = this.route.snapshot.data['consultas'];
+    this.consultasVM = this.route.data.pipe(map((res) => res['consulta']));
   }
 
   gravar() {
-    this.consultasService.excluir(this.consultasVM!.id).subscribe(() => {
+    const id = this.route.snapshot.paramMap.get('id')!;
+
+    this.consultasService.excluir(id).subscribe(() => {
       this.toastrService.success(
         `A consulta foi excluída com sucesso!`,
         'Sucesso'

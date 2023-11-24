@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CirurgiasService } from '../services/cirugias.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
 import { MedicosService } from '../../medicos/services/medicos.service';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-inserir-cirurgias',
@@ -13,32 +14,32 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InserirCirurgiasComponent implements OnInit {
   form?: FormGroup;
-  medico: ListarMedicosViewModel[] = [];
+  medicos$?: Observable<ListarMedicosViewModel[]>;
 
   constructor(
     private fb: FormBuilder,
     private cirurgiasService: CirurgiasService,
     private medicosService: MedicosService,
     private toastrService: ToastrService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      Titulo: [''],
-      Data: [''],
-      HoraInicio: [''],
-      HoraTermino: [''],
-      medicoId: new FormControl(''),
+      titulo: new FormControl('', [Validators.required]),
+      data: new FormControl('', [Validators.required]),
+      horaInicio: new FormControl('', [Validators.required]),
+      horaTermino: new FormControl('', [Validators.required]), 
+      medicosSelecionados: [[]],
     });
 
-    this.medicosService
-      .selecionarTodos()
-      .subscribe((MedicosSelecionados) => (this.medico = MedicosSelecionados));
+    this.medicos$ = this.route.data.pipe(map(dados => dados['medicos']));
+   
   }
 
-  campoEstaInvalido(nome: string) {
-    return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
+  campoEstaInvalido(titulo: string) {
+    return this.form?.get(titulo)!.touched && this.form?.get(titulo)!.invalid;
   }
 
   gravar() {
@@ -56,7 +57,7 @@ export class InserirCirurgiasComponent implements OnInit {
         'Sucesso'
       );
 
-      this.router.navigate(['/medicos/listar']);
+      this.router.navigate(['/cirurgias/listar']);
     });
   }
 }

@@ -1,58 +1,71 @@
-<div class="container">
-  <div class="row">
-    <!-- Conteúdo principal -->
-    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
-      <!-- Titulo -->
-      <div class="text-md-start">
-        <div class="text-md-start">
-          <h1 class="fw-bold text-primary">Excluir Médico</h1>
-          <hr />
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+    <h1 class="fs-2">Excluir Médico</h1>
+
+    <p class="fs-5">
+      Você tem certeza que deseja excluir o seguinte médico?
+    </p>
+
+    <mat-list *ngIf="medicosVM | async as medico">
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Id:</span>
+          <span>{{medico.id}}</span>
         </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
 
-        <h2 class="fs-5">
-          Tem certeza que deseja excluir o médico: 
-          <span class="fw-bolder fst-italic">"{{ medicosVM.nome }}" </span
-          >?
-        </h2>
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>CRM:</span>
+          <span>{{medico.crm}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Nome:</span>
+        <span>{{medico.nome}}</span>
       </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">CRM:</label>
-        </dt>
-        <dd class="col-md-8">{{ medicosVM.crm }}</dd>
-      </dl>
+  <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Telefone:</span>
+        <span>{{medico.telefone}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">Telefone:</label>
-        </dt>
-        <dd class="col-md-8">{{ medicosVM.telefone }}</dd>
-      </dl>
+  <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Disponibilidade:</span>
+        <span>Sim</span>
+      </div>
+    </mat-list-item>
+    </mat-list>
 
-      <dl class="form-group mt-4 row">
-        <dt class="col-md-4">
-          <label class="control-label">Disponibilidade:</label>
-        </dt>
-        <dd class="col-md-8">{{ medicosVM.disponivel }}</dd>
-      </dl>
 
-      <div class="card-footer g-grid d-flex gap-1 mt-5">
-        <button (click)="gravar()" type="button" class="btn btn-danger px-5">
-          <i class="bi bi-trash-fill me-2"></i>
-          Excluir
-        </button>
-        <button
-          routerLink="/medicos/listar"
-          type="button"
-          class="btn btn-outline-primary px-5"
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button
+        class="py-3 px-5"
+        color="warn"
+        mat-raised-button
+        (click)="gravar()"
         >
-          <i class="bi bi-arrow-return-left me-2"></i>
-          Voltar
-        </button>
-      </div>
+
+        Excluir
+      </button>
+      <button
+        routerLink="/medicos/listar"
+        class="py-3 px-5"
+        color="primary"
+        mat-stroked-button
+      >
+        Voltar
+      </button>
     </div>
   </div>
 </div>
-  
-

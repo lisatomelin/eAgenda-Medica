@@ -5,24 +5,24 @@ import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View
 import { MedicosService } from '../../medicos/services/medicos.service';
 import { CirurgiasService } from '../services/cirugias.service';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-editar-cirurgia',
   templateUrl: './editar-cirurgia.component.html',
-  styleUrls: ['./editar-cirurgia.component.scss']
+  styleUrls: ['./editar-cirurgia.component.scss'],
 })
-export class EditarCirurgiaComponent implements OnInit{
-
+export class EditarCirurgiaComponent implements OnInit {
   form?: FormGroup;
-  medicos: ListarMedicosViewModel[] = [];
+  medicos?: Observable<ListarMedicosViewModel[]>
 
   constructor(
     private fb: FormBuilder,
     private cirurgiasService: CirurgiasService,
-    private medicosService: MedicosService,    
+    private medicosService: MedicosService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastrService: ToastrService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -31,14 +31,16 @@ export class EditarCirurgiaComponent implements OnInit{
       data: [''],
       horaInicio: [''],
       horaTermino: [''],
-      medicoId: new FormControl(''),
+      medicosSelecionados: [[]],
     });
 
-    this.medicosService
-      .selecionarTodos()
-      .subscribe(
-        (MedicosSelecionados) => (this.medicos = MedicosSelecionados)
-      );
+    this.medicos = this.route.data.pipe(map(dados => dados['medicos']));
+
+    const cirurgia = this.route.snapshot.data['cirurgia'];
+
+    this.form.patchValue(cirurgia);
+
+    
   }
 
   campoEstaInvalido(titulo: string) {
@@ -62,11 +64,7 @@ export class EditarCirurgiaComponent implements OnInit{
         'Sucesso'
       );
 
-      this.router.navigate(['/cirugias/listar']);
+      this.router.navigate(['/cirurgias/listar']);
     });
   }
- 
-  
-
-
 }

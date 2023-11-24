@@ -1,11 +1,15 @@
 <div class="row justify-content-center align-items-center mt-5">
   <div class="col-md-5">
-    <h1 class="fs-2">Inserir Nova Consulta</h1>
+    <h1 class="fs-2">Agendar Consulta</h1>
 
-    <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
-      <mat-form-field appearance="outline">
-        <mat-label>Título</mat-label>
-        <input type="text" formControlName="titulo" matInput />
+    <form (ngSubmit)="gravar()" [formGroup]="form!" class="d-grid mt-4">
+
+      <mat-form-field appearance="outline" class="d-grid mt-3">
+        <mat-label for="titulo">Título</mat-label>
+        <input
+        formControlName="titulo"
+        matInput type="text"
+        placeholder="Digite o Título" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -14,39 +18,41 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Hora Início:</mat-label>
-        <input type="time" formControlName="horaInicio" matInput />
+        <mat-label>Hora Início</mat-label>
+        <input 
+        formControlName="horaInicio"
+        type="time" 
+        matInput
+        placeholder="HH:mm"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Hora Término:</mat-label>
-        <input type="time" formControlName="horaTermino" matInput />
+        <mat-label>Hora Final</mat-label>
+        <input 
+        formControlName="horaTermino"
+        type="time" 
+        matInput
+        placeholder="HH:mm"
+        />
       </mat-form-field>
 
-      <div class="form-group mb-3 position-relative">
-        <label class="form-label">Médico:</label>
-        <select
-          class="form-select w-50"
-          name="medicoId"
-          formControlName="medicoId"
-        >
-          <option *ngFor="let medico of medico" [ngValue]="medico.id">
+      <mat-form-field appearance="outline">
+        <mat-label>Médicos</mat-label>
+        <mat-select formControlName="medicoId"medico multiple>
+          <mat-option *ngFor="let medico of (medicos$ | async)" [value]="medico.id">
             {{ medico.nome }}
-          </option>
-        </select>
-      </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div class="d-flex justify-content-end gap-2 mt-5">
-        <button
-          type="submit"
-          class="py-3 px-5"
-          color="primary"
-          mat-raised-button
-        >
+        <button type="submit" class="py-3 px-5" color="primary" mat-raised-button>
           Salvar
         </button>
         <button
-          routerLink="/cirurgias/listar"
+          type="button"
+          routerLink="/consultas/listar"
           class="py-3 px-5"
           color="warn"
           mat-stroked-button

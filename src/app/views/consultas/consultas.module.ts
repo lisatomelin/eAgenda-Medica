@@ -10,6 +10,7 @@ import { ConsultasService } from './services/consultas.service';
 import { EditarConsultasComponent } from './editar-consultas/editar-consultas.component';
 import { ExcluirConsultasComponent } from './excluir-consultas/excluir-consultas.component';
 import 'src/app/extensions/form-group.extension';
+import { MedicosService } from '../medicos/services/medicos.service';
 
 
 @NgModule({
@@ -27,6 +28,6 @@ import 'src/app/extensions/form-group.extension';
     ReactiveFormsModule
   ],
 
-  providers: [ConsultasService],
+  providers: [ConsultasService, MedicosService],
 })
 export class ConsultasModule { }

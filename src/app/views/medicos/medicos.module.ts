@@ -9,7 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MedicosService } from './services/medicos.service';
 import { EditarMedicosComponent } from './editar-medicos/editar-medicos.component';
 import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.component';
-import 'src/app/extensions/form-group.extension'; 
+import 'src/app/extensions/form-group.extension';
+import { VisualizarCirurgiasMedicoComponent } from './visualizar-cirurgias-medico/visualizar-cirurgias-medico.component';
+import { VisualizarConsultasMedicoComponent } from './visualizar-consultas-medico/visualizar-consultas-medico.component'; 
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import 'src/app/extensions/form-group.extension';
     InserirMedicosComponent,
     EditarMedicosComponent,
     ExcluirMedicosComponent,
+    VisualizarCirurgiasMedicoComponent,
+    VisualizarConsultasMedicoComponent,
     
   ],
   imports: [
