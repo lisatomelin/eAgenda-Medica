@@ -9,6 +9,10 @@ import { MedicosService } from './services/medicos.service';
 import { ConsultasService } from '../consultas/services/consultas.service';
 import { VisualizarConsultasViewModel } from '../consultas/models/visualizar-consultas.View-Model';
 import { VisualizarMedicosViewModel } from './models/visualizar-medicos.View-Model';
+import { ListarConsultasViewModel } from '../consultas/models/listar-consultas.View-Model';
+import { ListarCirurgiasViewModel } from '../cirurgias/models/listar-cirurgias.View-Model';
+import { VisualizarConsultasMedicoComponent } from './visualizar-consultas-medico/visualizar-consultas-medico.component';
+import { VisualizarCirurgiasMedicoComponent } from './visualizar-cirurgias-medico/visualizar-cirurgias-medico.component';
 
 
 const listarMedicosResolver = () => {
@@ -25,6 +29,22 @@ const visualizarMedicosResolver: ResolveFn<VisualizarMedicosViewModel> = (
   route: ActivatedRouteSnapshot
 ) => {
   return inject(MedicosService).selecionarPorId(
+    route.paramMap.get('id')!
+  );
+};
+
+const visualizarConsultasMedicoResolver: ResolveFn<ListarConsultasViewModel[]> = (
+  route: ActivatedRouteSnapshot
+) => {
+  return inject(MedicosService).selecionarConsultasMedico(
+    route.paramMap.get('id')!
+  );
+};
+
+const visualizarCirurgiasMedicoResolver: ResolveFn<ListarCirurgiasViewModel[]> = (
+  route: ActivatedRouteSnapshot
+) => {
+  return inject(MedicosService).selecionarCirurgiasMedico(
     route.paramMap.get('id')!
   );
 };
@@ -58,6 +78,19 @@ const routes: Routes = [
     component: ExcluirMedicosComponent,
     resolve: { medico: visualizarMedicosResolver },
   },
+
+  {
+    path: 'visualizar-medico-consultas/:id',
+    component: VisualizarConsultasMedicoComponent,
+    resolve: { consultas: visualizarConsultasMedicoResolver },
+  },
+  {
+    path: 'visualizar-medico-cirurgias/:id',
+    component: VisualizarCirurgiasMedicoComponent,
+    resolve: { cirurgias: visualizarCirurgiasMedicoResolver },
+  },
+
+
 ];
 
 @NgModule({

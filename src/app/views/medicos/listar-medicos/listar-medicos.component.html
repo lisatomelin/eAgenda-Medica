@@ -42,6 +42,22 @@
         <mat-card-actions class="pe-0" align="end">
           <button
             mat-icon-button
+            matTooltip="Visualizar Cirurgias"
+            color="primary"
+            routerLink="/medicos/visualizar-medico-cirurgias/{{ medico.id }}"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            matTooltip="Visualizar Consultas"
+            color="primary"
+            routerLink="/medicos/visualizar-medico-consultas/{{ medico.id }}"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </button>
+          <button
+            mat-icon-button
             matTooltip="Editar"
             color="primary"
             routerLink="/medicos/editar/{{medico.id}}"

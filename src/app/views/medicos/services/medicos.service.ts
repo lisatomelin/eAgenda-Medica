@@ -5,6 +5,8 @@ import { environment } from "src/environments/environment";
 import { FormsMedicosViewModel } from "../models/forms-medicos.View-Model";
 import { VisualizarMedicosViewModel } from "../models/visualizar-medicos.View-Model";
 import { ListarMedicosViewModel } from "../models/listar-medicos.View-Model";
+import { ListarConsultasViewModel } from "../../consultas/models/listar-consultas.View-Model";
+import { ListarCirurgiasViewModel } from "../../cirurgias/models/listar-cirurgias.View-Model";
 
 @Injectable()
 export class MedicosService {
@@ -40,4 +42,18 @@ export class MedicosService {
     .pipe(map(res => res.dados));
   }
 
+  selecionarConsultasMedico(id: string): Observable<ListarConsultasViewModel[]> {
+    const url = `${this.API_URL}/visualizar-medico-consultas/${id}`;
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados));
+  }
+
+  selecionarCirurgiasMedico(id: string): Observable<ListarCirurgiasViewModel[]> {
+    const url = `${this.API_URL}/visualizar-medico-cirurgias/${id}`;
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados));
+  }
+
 }
+  
+  
