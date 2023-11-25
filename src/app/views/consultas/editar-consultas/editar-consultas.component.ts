@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConsultasService } from '../services/consultas.service';
+import { Observable, map } from 'rxjs';
+import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
 
 @Component({
   selector: 'app-editar-consultas',
@@ -11,51 +13,56 @@ import { ConsultasService } from '../services/consultas.service';
 })
 export class EditarConsultasComponent {
 
-  form?: FormGroup;
+    form?: FormGroup;
+    medicos?: Observable<ListarMedicosViewModel[]>
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private consultasService: ConsultasService,
-    private toastrService: ToastrService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    constructor(
+      private formBuilder: FormBuilder,
+      private consultasService: ConsultasService,
+      private toastrService: ToastrService,
+      private router: Router,
+      private route: ActivatedRoute
+    ) {}
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      titulo: [''],
-      data: [''],
-      horaInicio: [''],
-      horaTermino: [''],
-      medicoId: new FormControl(''),
-    });
+    ngOnInit(): void {
+      this.form = this.formBuilder.group({
+        titulo: [''],
+        data: [''],
+        horaInicio: [''],
+        horaTermino: [''],
+        medicoId: new FormControl(''),
+      });    
 
-    this.form.patchValue(this.route.snapshot.data['consultas']);
-  }
+      this.medicos = this.route.data.pipe(map(dados => dados['medicos']));
 
-  campoEstaInvalido(nome: string) {
-    return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
-  }
+      const consulta = this.route.snapshot.data['consulta'];
 
-  gravar() {
-    if (this.form?.invalid) {
-      for (let erro of this.form.validate()) {
-        this.toastrService.warning(erro);
-      }
-
-      return;
+      this.form.patchValue(consulta);
     }
 
-    const id = this.route.snapshot.paramMap.get('id')!;
+    campoEstaInvalido(nome: string) {
+      return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
+    }
 
-    this.consultasService.editar(id, this.form?.value).subscribe((res) => {
-      this.toastrService.success(
-        `A consulta "${res.titulo}" foi editada com sucesso!`,
-        'Sucesso'
-      );
+    gravar() {
+      if (this.form?.invalid) {
+        for (let erro of this.form.validate()) {
+          this.toastrService.warning(erro);
+        }
 
-      this.router.navigate(['/consultas/listar']);
-    });
-  }
+        return;
+      }
+
+      const id = this.route.snapshot.paramMap.get('id')!;
+
+      this.consultasService.editar(id, this.form?.value).subscribe((res) => {
+        this.toastrService.success(
+          `A consulta "${res.titulo}" foi editada com sucesso!`,
+          'Sucesso'
+        );
+
+        this.router.navigate(['/consultas/listar']);
+      });
+    }
 
 }

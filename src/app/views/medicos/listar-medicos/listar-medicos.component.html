@@ -7,7 +7,7 @@
     <button
       routerLink="/medicos/inserir"
       mat-raised-button
-      class="me-auto py-4 px-4 fs-8"
+      class="me-auto py-20 px-10 fs-8"
       color="primary">
       <mat-icon>add</mat-icon>
       Novo Médico
@@ -17,7 +17,7 @@
       <mat-card
         *ngFor="let medico of medicos$ | async"
         appCardHover
-        class="col-12 col-md-6 col-lg-3 text-black"
+        class="col-10 col-md-7 col-lg-5 text-black"
       >
         <mat-card-header>
           <mat-card-title>
@@ -46,7 +46,7 @@
             color="primary"
             routerLink="/medicos/visualizar-medico-cirurgias/{{ medico.id }}"
           >
-            <mat-icon>edit_note</mat-icon>
+            <mat-icon>filter-list</mat-icon>
           </button>
           <button
             mat-icon-button
@@ -54,7 +54,7 @@
             color="primary"
             routerLink="/medicos/visualizar-medico-consultas/{{ medico.id }}"
           >
-            <mat-icon>edit_note</mat-icon>
+            <mat-icon>filter-list</mat-icon>
           </button>
           <button
             mat-icon-button

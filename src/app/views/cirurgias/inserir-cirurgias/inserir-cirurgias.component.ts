@@ -18,8 +18,7 @@ export class InserirCirurgiasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cirurgiasService: CirurgiasService,
-    private medicosService: MedicosService,
+    private cirurgiasService: CirurgiasService,    
     private toastrService: ToastrService,
     private route: ActivatedRoute,
     private router: Router

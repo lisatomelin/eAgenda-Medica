@@ -39,7 +39,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Médicos</mat-label>
-        <mat-select formControlName="medicoId"medico multiple>
+        <mat-select formControlName="medicoId">
           <mat-option *ngFor="let medico of (medicos$ | async)" [value]="medico.id">
             {{ medico.nome }}
           </mat-option>

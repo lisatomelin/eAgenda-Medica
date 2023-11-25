@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListarConsultasViewModel } from '../models/listar-consultas.View-Model';
 import { VisualizarConsultasViewModel } from '../models/visualizar-consultas.View-Model';
 import { FormsConsultasViewModel } from '../models/forms-consultas.View-Model';
+import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
 
 
 
@@ -30,8 +31,15 @@ export class ConsultasService {
     return this.http.delete<VisualizarConsultasViewModel>(url);
   }
 
-  selecionarPorId(id: string): Observable<VisualizarConsultasViewModel> {
+  selecionarPorIdCompleto(id: string): Observable<VisualizarConsultasViewModel> {
     const url = `${this.API_URL}/visualizacao-completa/${id}`;
+
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados));
+  }
+
+  selecionarPorId(id: string): Observable<FormsConsultasViewModel> {
+    const url = `${this.API_URL}/${id}`;
 
     return this.http.get<any>(url)
     .pipe(map(res => res.dados));
@@ -40,5 +48,12 @@ export class ConsultasService {
   selecionarTodos(): Observable<ListarConsultasViewModel[]> {
     return this.http.get<any>(this.API_URL)
     .pipe(map(res => res.dados));
+  }
+
+  selecionarTodosMedicosCirurgias(id: string): Observable<ListarMedicosViewModel[]> {
+    const url = `${this.API_URL}/medicos/${id}`;
+
+    return this.http.get<any>(url)
+    .pipe(map(res => res.dados), tap(x => console.log(x)));
   }
 }

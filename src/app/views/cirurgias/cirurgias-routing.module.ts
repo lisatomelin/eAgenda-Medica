@@ -6,7 +6,6 @@ import { EditarCirurgiaComponent } from './editar-cirurgia/editar-cirurgia.compo
 import { ExcluirCirurgiaComponent } from './excluir-cirurgia/excluir-cirurgia.component';
 import { CirurgiasService } from './services/cirugias.service';
 import { MedicosService } from '../medicos/services/medicos.service';
-import { VisualizarCirurgiasViewModel } from './models/visualizar-cirgias.View-Model';
 import { FormsCirurgiasViewModel } from './models/forms-cirurgias.View-Model';
 import { ListarMedicosViewModel } from '../medicos/models/listar-medicos.View-Model';
 import { VisualizarMedicoCirurgiaComponent } from './visualizar-medico-cirurgia/visualizar-medico-cirurgia.component';

@@ -19,8 +19,7 @@ export class InserirConsultasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private consultasService: ConsultasService,
-    private medicosService: MedicosService,
+    private consultasService: ConsultasService,    
     private toastrService: ToastrService,
     private route: ActivatedRoute,
     private router: Router
@@ -32,7 +31,7 @@ export class InserirConsultasComponent implements OnInit {
       data: new FormControl('', [Validators.required]),
       horaInicio: new FormControl('', [Validators.required]),
       horaTermino: new FormControl('', [Validators.required]), 
-      medicoId: new FormControl('', [Validators.required]),
+      medicoId: new FormControl('')
     });
 
     this.medicos$ = this.route.data.pipe(map(dados => dados['medicos']));
