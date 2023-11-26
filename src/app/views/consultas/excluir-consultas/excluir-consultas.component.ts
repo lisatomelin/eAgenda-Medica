@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { VisualizarConsultasViewModel } from '../models/visualizar-consultas.View-Model';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConsultasService } from '../services/consultas.service';
 import { Observable, map } from 'rxjs';
+import { VisualizarConsultaViewModel } from '../models/visualizar-consultas.View-Model';
 
 @Component({
   selector: 'app-excluir-consultas',
@@ -12,7 +13,7 @@ import { Observable, map } from 'rxjs';
 })
 export class ExcluirConsultasComponent implements OnInit {
 
-  consultasVM?: Observable<VisualizarConsultasViewModel>;
+  consultasVM?: Observable<VisualizarConsultaViewModel>;
 
   constructor(
     private consultasService: ConsultasService,

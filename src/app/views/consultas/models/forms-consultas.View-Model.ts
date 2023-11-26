@@ -1,8 +1,11 @@
-export type  FormsConsultasViewModel = {
-  id: string,
+import { VisualizarMedicosViewModel } from "../../medicos/models/visualizar-medicos.View-Model";
+
+
+export type FormsConsultaViewModel = {
   titulo: string;
   data: Date;
-  horaInicio: string;
-  horaTermino: string;
-  nomeMedico: string;
-};
+  horaInicio: Date;
+  horaTermino: Date;
+  medico: VisualizarMedicosViewModel;
+  medicoId: string;
+}

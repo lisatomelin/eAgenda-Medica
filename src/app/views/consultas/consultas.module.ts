@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { ConsultasRoutingModule } from './consultas-routing.module';
 import { ListarConsultasComponent } from './listar-consultas/listar-consultas.component';
@@ -28,6 +28,6 @@ import { MedicosService } from '../medicos/services/medicos.service';
     ReactiveFormsModule
   ],
 
-  providers: [ConsultasService, MedicosService],
+  providers: [ConsultasService, MedicosService, DatePipe],
 })
 export class ConsultasModule { }

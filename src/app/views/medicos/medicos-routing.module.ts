@@ -5,11 +5,8 @@ import { InserirMedicosComponent } from './inserir-medicos/inserir-medicos.compo
 import { EditarMedicosComponent } from './editar-medicos/editar-medicos.component';
 import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.component';
 import { MedicosService } from './services/medicos.service';
-
-import { ConsultasService } from '../consultas/services/consultas.service';
-import { VisualizarConsultasViewModel } from '../consultas/models/visualizar-consultas.View-Model';
 import { VisualizarMedicosViewModel } from './models/visualizar-medicos.View-Model';
-import { ListarConsultasViewModel } from '../consultas/models/listar-consultas.View-Model';
+import { ListarConsultaViewModel } from '../consultas/models/listar-consultas.View-Model';
 import { ListarCirurgiasViewModel } from '../cirurgias/models/listar-cirurgias.View-Model';
 import { VisualizarConsultasMedicoComponent } from './visualizar-consultas-medico/visualizar-consultas-medico.component';
 import { VisualizarCirurgiasMedicoComponent } from './visualizar-cirurgias-medico/visualizar-cirurgias-medico.component';
@@ -33,7 +30,7 @@ const visualizarMedicosResolver: ResolveFn<VisualizarMedicosViewModel> = (
   );
 };
 
-const visualizarConsultasMedicoResolver: ResolveFn<ListarConsultasViewModel[]> = (
+const visualizarConsultasMedicoResolver: ResolveFn<ListarConsultaViewModel[]> = (
   route: ActivatedRouteSnapshot
 ) => {
   return inject(MedicosService).selecionarConsultasMedico(

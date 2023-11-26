@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { ListarConsultasViewModel } from '../../consultas/models/listar-consultas.View-Model';
+import { ListarConsultaViewModel } from '../../consultas/models/listar-consultas.View-Model';
 
 @Component({
   selector: 'app-visualizar-consultas-medico',
@@ -10,7 +10,7 @@ import { ListarConsultasViewModel } from '../../consultas/models/listar-consulta
 })
 export class VisualizarConsultasMedicoComponent {
 
-  consultas$?: Observable<ListarConsultasViewModel[]>;
+  consultas$?: Observable<ListarConsultaViewModel[]>;
 
   constructor(private route: ActivatedRoute) {}
 

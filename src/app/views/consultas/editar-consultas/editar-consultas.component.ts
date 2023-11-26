@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ConsultasService } from '../services/consultas.service';
 import { Observable, map } from 'rxjs';
 import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
+import { NotificationService } from 'src/app/core/notification/services/notification.service';
+import { FormsConsultaViewModel } from '../models/forms-consultas.View-Model';
 
 @Component({
   selector: 'app-editar-consultas',
@@ -18,20 +20,21 @@ export class EditarConsultasComponent {
 
     constructor(
       private formBuilder: FormBuilder,
-      private consultasService: ConsultasService,
-      private toastrService: ToastrService,
+      private consultasService: ConsultasService,      
       private router: Router,
+      private notification: NotificationService,
       private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
       this.form = this.formBuilder.group({
-        titulo: [''],
-        data: [''],
-        horaInicio: [''],
-        horaTermino: [''],
-        medicoId: new FormControl(''),
-      });    
+        titulo: new FormControl('', [Validators.required]),
+        data: new FormControl('', [Validators.required,]),
+        horaInicio: new FormControl('', [Validators.required]),
+        horaTermino: new FormControl('', [Validators.required]),
+        medicoId: new FormControl('', [Validators.required]),
+      }); 
+    
 
       this.medicos = this.route.data.pipe(map(dados => dados['medicos']));
 
@@ -40,29 +43,24 @@ export class EditarConsultasComponent {
       this.form.patchValue(consulta);
     }
 
-    campoEstaInvalido(nome: string) {
-      return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
+    campoEstaInvalido(titulo: string) {
+      return this.form?.get(titulo)!.touched && this.form?.get(titulo)!.invalid;
     }
 
-    gravar() {
-      if (this.form?.invalid) {
-        for (let erro of this.form.validate()) {
-          this.toastrService.warning(erro);
-        }
-
-        return;
-      }
-
+    gravar(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
 
-      this.consultasService.editar(id, this.form?.value).subscribe((res) => {
-        this.toastrService.success(
-          `A consulta "${res.titulo}" foi editada com sucesso!`,
-          'Sucesso'
-        );
-
-        this.router.navigate(['/consultas/listar']);
+      this.consultasService.editar(id, this.form?.value).subscribe({
+        next: (res) => this.processarSucesso(res),
+        error: (err) => this.processarFalha(err),
       });
+    }
+    processarSucesso(res: FormsConsultaViewModel) {
+      this.router.navigate(['/consultas', 'listar']);
+    }
+  
+    processarFalha(err: any) {
+      this.notification.erro(err.error.erros[0]);
     }
 
 }

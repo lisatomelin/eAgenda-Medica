@@ -3,9 +3,9 @@ import { CirurgiasService } from '../services/cirugias.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListarMedicosViewModel } from '../../medicos/models/listar-medicos.View-Model';
-import { MedicosService } from '../../medicos/services/medicos.service';
-import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
+import { NotificationService } from 'src/app/core/notification/services/notification.service';
+import { FormsCirurgiasViewModel } from '../models/forms-cirurgias.View-Model';
 
 @Component({
   selector: 'app-inserir-cirurgias',
@@ -19,8 +19,8 @@ export class InserirCirurgiasComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cirurgiasService: CirurgiasService,    
-    private toastrService: ToastrService,
     private route: ActivatedRoute,
+    private notification: NotificationService,
     private router: Router
   ) {}
 
@@ -41,22 +41,17 @@ export class InserirCirurgiasComponent implements OnInit {
     return this.form?.get(titulo)!.touched && this.form?.get(titulo)!.invalid;
   }
 
-  gravar() {
-    if (this.form?.invalid) {
-      for (let erro of this.form.validate()) {
-        this.toastrService.warning(erro);
-      }
-
-      return;
-    }
-
-    this.cirurgiasService.criar(this.form?.value).subscribe((res) => {
-      this.toastrService.success(
-        `A cirurgia "${res.titulo}" foi cadastrada com sucesso!`,
-        'Sucesso'
-      );
-
-      this.router.navigate(['/cirurgias/listar']);
+  gravar(): void {
+    this.cirurgiasService.criar(this.form?.value).subscribe({
+      next: (res) => this.processarSucesso(res),
+      error: (err) => this.processarFalha(err),
     });
+  }
+  processarSucesso(res: FormsCirurgiasViewModel) {
+    this.router.navigate(['/cirurgias', 'listar']);
+  }
+
+  processarFalha(err: any) {
+    this.notification.erro(err.error.erros[0]);
   }
 }
