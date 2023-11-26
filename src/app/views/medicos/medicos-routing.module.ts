@@ -3,13 +3,14 @@ import { ActivatedRouteSnapshot, ResolveFn, RouterModule, Routes } from '@angula
 import { ListarMedicosComponent } from './listar-medicos/listar-medicos.component';
 import { InserirMedicosComponent } from './inserir-medicos/inserir-medicos.component';
 import { EditarMedicosComponent } from './editar-medicos/editar-medicos.component';
-import { ExcluirMedicosComponent } from './excluir-medicos/excluir-medicos.component';
+
 import { MedicosService } from './services/medicos.service';
 import { VisualizarMedicosViewModel } from './models/visualizar-medicos.View-Model';
 import { ListarConsultaViewModel } from '../consultas/models/listar-consultas.View-Model';
 import { ListarCirurgiasViewModel } from '../cirurgias/models/listar-cirurgias.View-Model';
 import { VisualizarConsultasMedicoComponent } from './visualizar-consultas-medico/visualizar-consultas-medico.component';
 import { VisualizarCirurgiasMedicoComponent } from './visualizar-cirurgias-medico/visualizar-cirurgias-medico.component';
+import { ExcluirMedicoComponent } from './excluir-medicos/excluir-medicos.component';
 
 
 const listarMedicosResolver = () => {
@@ -72,7 +73,7 @@ const routes: Routes = [
 
   {
     path: 'excluir/:id',
-    component: ExcluirMedicosComponent,
+    component: ExcluirMedicoComponent,
     resolve: { medico: visualizarMedicosResolver },
   },
 
